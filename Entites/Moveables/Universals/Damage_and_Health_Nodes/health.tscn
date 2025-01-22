@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dspc8ps35sdl4"]
+
+[ext_resource type="Script" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/scripts/health.gd" id="1_be3j2"]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_be3j2")
