@@ -11,6 +11,10 @@ signal hit(damage:int, knockback:float, direction:Vector2)
 ## The strength of knock back the hurt_box causes
 @export var _knockback_strength:float = 10.0
 
+func _ready() -> void:
+	if self.collision_mask == 0:
+		printerr("HURTBOX IS NOT SET ON A COLLISION MASK AND CANNOT DETECT HEALTH BOXES")
+
 ## Enables the hit box
 func enable()->void:
 	if self.monitoring == false:

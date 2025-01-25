@@ -3,10 +3,8 @@ extends Area2D
 ## The health node deals with the health and damage being recived to an entity. The Node exists on a collision layer to be detectable to any hurt boxes.
 class_name health
 
-## Progress bar node path to be used as the health bar
-@export_node_path("ProgressBar") var health_bar_scene:NodePath
-## The progress bar NODE that will display health
-@onready var health_bar:ProgressBar = get_node(health_bar_scene)
+## The progress bar node that will display health
+@export var health_bar:ProgressBar
 
 ## When health reaches zero it emits this signal
 signal on_death()
@@ -35,6 +33,11 @@ func disable()->void:
 
 ## When this node is loaded in it will set the health_bar to visible and set the health to max health
 func _ready() -> void:
+	assert(health_bar != null, "health must have a health bar") # IF THIS TRIGGERS IT MEANS YOU DIDN'T ADD A "ProgressBar" NODE INTO THE "Health Bar" SLOT IN THE INSPECTOR
+	
+	if self.collision_layer == 0:
+		printerr("HEALTH OBJECT IS NOT ASSIGNED TO A COLLISION LAYER AND IS UNDETECTABLE")
+	
 	health_bar.set_visible(true)
 	health_bar.value = my_health
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca3ve5njfu8nm"]
+
+[ext_resource type="Script" path="res://Entites/Moveables/Enemies/test_enemy/test_enemy.gd" id="1_ro3ep"]
+[ext_resource type="PackedScene" uid="uid://dspc8ps35sdl4" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/health.tscn" id="2_dhl1c"]
+[ext_resource type="Texture2D" uid="uid://ckosq4s65jl8i" path="res://icon.svg" id="3_0rm4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k76t1"]
+size = Vector2(128, 128)
+
+[node name="TestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("MY_HEALTH")]
+script = ExtResource("1_ro3ep")
+MY_HEALTH = NodePath("HealthBox")
+
+[node name="HealthBox" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("2_dhl1c")]
+collision_layer = 16
+health_bar = NodePath("../Health_Bar")
+
+[node name="hit_box" type="CollisionShape2D" parent="HealthBox"]
+visible = false
+shape = SubResource("RectangleShape2D_k76t1")
+
+[node name="Health_Bar" type="ProgressBar" parent="."]
+offset_left = -54.0
+offset_top = -98.0
+offset_right = 58.0
+offset_bottom = -71.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.461862, 1.05888e-06, 2.64719e-07, 1)
+texture = ExtResource("3_0rm4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_k76t1")
