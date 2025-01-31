@@ -12,8 +12,16 @@ signal hit(damage:int, knockback:float, direction:Vector2)
 @export var _knockback_strength:float = 10.0
 
 func _ready() -> void:
+	# Checks if hurt box is set to a collision mask
 	if self.collision_mask == 0:
 		printerr("HURTBOX IS NOT SET ON A COLLISION MASK AND CANNOT DETECT HEALTH BOXES")
+	
+	# checks if signals are connected properly
+	if !self.area_entered.is_connected(self._on_area_entered):
+		self.area_entered.connect(self._on_area_entered)
+	
+	if !self.area_exited.is_connected(self._on_area_exited):
+		self.area_exited.connect(self._on_area_exited)
 
 ## Enables the hit box
 func enable()->void:
