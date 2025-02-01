@@ -26,7 +26,8 @@ var STATE:int = IDLE
 
 ## A function to keep track of state changes 
 func change_state(new_state:int)->void:
-	STATE = new_state
+	if STATE != DEAD:
+		STATE = new_state
 
 ## takes a destination vector and returns a velocity to get to the destination
 func go_to(destination:Vector2)->Vector2:

@@ -18,3 +18,7 @@ func _state_handler()->void:
 			pass
 		_:
 			printerr("ERROR ON GOBLIN STATE TREE")
+
+
+func _on_death() -> void:
+	change_state(DEAD)

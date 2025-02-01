@@ -456,3 +456,5 @@ metadata/_edit_lock_ = true
 visible = false
 offset_right = 4.0
 offset_bottom = 27.0
+
+[connection signal="on_death" from="HealthBox" to="." method="_on_death"]
