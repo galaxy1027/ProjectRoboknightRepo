@@ -6,6 +6,9 @@ class_name base_enemy
 ## Refrence to the enemy's health object, REQUIRED(you can turn it off if you want them invincible or something)
 @export var MY_HEALTH:health
 
+## The player's instance
+var target:CharacterBody2D = null
+
 func _ready() -> void:
 	# assert(is_instance_valid(MY_HEALTH), "Enemy must have a health object") # IF THIS TRIGGERS IT MEANS YOU DIDN'T ADD A "health" NODE INTO THE "My Health" SLOT IN THE INSPECTOR
 	
@@ -19,10 +22,15 @@ func _ready() -> void:
 ## How fast the enemy can change directions and get up to speed
 @export var _ACCELERATION:float = 80.0
 
+## The general direction the enemy is facing, +x is right, +y is down
+var direction:Vector2 = Vector2(0,1)
+
 ## Example of an enum
-enum {DEAD, IDLE, WANDERING, PURSUING, ATTACKING}
+enum {DEAD, IDLE, PURSUING, ATTACKING}
 ## The state the enemy is currently in
 var STATE:int = IDLE
+## The previous state if required to change things around on a state change
+var STATE_P:int = STATE
 
 ## A function to keep track of state changes 
 func change_state(new_state:int)->void:

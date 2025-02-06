@@ -427,9 +427,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw78j"]
 size = Vector2(78, 137)
 
-[node name="CyberGoblin" type="CharacterBody2D"]
+[node name="CyberGoblin" type="CharacterBody2D" node_paths=PackedStringArray("MY_HEALTH")]
 collision_layer = 4
 script = ExtResource("1_wwsx2")
+MY_HEALTH = NodePath("HealthBox")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -446,6 +447,7 @@ metadata/_edit_lock_ = true
 [node name="HealthBox" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("2_m6lhs")]
 collision_layer = 16
 health_bar = NodePath("../ProgressBar")
+max_health = 25
 metadata/_edit_lock_ = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_mwuej")]
@@ -457,4 +459,7 @@ visible = false
 offset_right = 4.0
 offset_bottom = 27.0
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+
 [connection signal="on_death" from="HealthBox" to="." method="_on_death"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_body_entered"]

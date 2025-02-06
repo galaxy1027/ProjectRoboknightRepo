@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq77lt83cik02"]
+
+[ext_resource type="Texture2D" uid="uid://bdkkm2vxur2l" path="res://Assets/spritesheets/bullet.png" id="1_7aa2m"]
+[ext_resource type="Script" path="res://Entites/Moveables/Enemies/Elf/bullet.gd" id="1_kc87q"]
+[ext_resource type="Script" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/scripts/hurt_box.gd" id="2_0n4w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bfsj"]
+size = Vector2(30, 6)
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_kc87q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_7aa2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_6bfsj")
+
+[node name="hurt_box" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 24
+monitorable = false
+script = ExtResource("2_0n4w0")
+_knockback_strength = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+visible = false
+shape = SubResource("RectangleShape2D_6bfsj")

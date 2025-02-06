@@ -33,11 +33,15 @@ func disable()->void:
 
 ## When this node is loaded in it will set the health_bar to visible and set the health to max health
 func _ready() -> void:
+	if self.monitoring == true:
+		self.set_deferred("monitoring", false)
+	
 	assert(health_bar != null, "health must have a health bar") # IF THIS TRIGGERS IT MEANS YOU DIDN'T ADD A "ProgressBar" NODE INTO THE "Health Bar" SLOT IN THE INSPECTOR
 	
 	if self.collision_layer == 0:
 		printerr("HEALTH OBJECT IS NOT ASSIGNED TO A COLLISION LAYER AND IS UNDETECTABLE")
 	
+	my_health = max_health
 	health_bar.set_visible(true)
 	health_bar.value = my_health
 

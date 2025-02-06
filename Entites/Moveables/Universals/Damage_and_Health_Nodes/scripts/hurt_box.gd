@@ -12,6 +12,9 @@ signal hit(damage:int, knockback:float, direction:Vector2)
 @export var _knockback_strength:float = 10.0
 
 func _ready() -> void:
+	if self.monitorable == true:
+		self.set_deferred("monitorable", false)
+	
 	# Checks if hurt box is set to a collision mask
 	if self.collision_mask == 0:
 		printerr("HURTBOX IS NOT SET ON A COLLISION MASK AND CANNOT DETECT HEALTH BOXES")
@@ -29,7 +32,7 @@ func enable()->void:
 		self.set_deferred("monitoring", true)
 
 ## Disables the hit box
-func disenable()->void:
+func disable()->void:
 	if self.monitoring == true:
 		self.set_deferred("monitoring", false)
 
