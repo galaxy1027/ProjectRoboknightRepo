@@ -21,7 +21,8 @@ func _state_handler()->void:
 				change_state(PURSUING)
 		PURSUING:
 			# When get to a distance shoot at player
-			if abs(self.global_position) < 1000:
+			if global_position.distance_to(target.global_position) < 1000:
+				velocity = Vector2.ZERO
 				change_state(ATTACKING)
 			elif target != null:
 				velocity = go_to(target.global_position)
@@ -39,7 +40,7 @@ func _state_handler()->void:
 			elif frame == 5:
 				change_state(IDLE)
 		_:
-			printerr("ERROR ON GOBLIN STATE TREE")
+			printerr("ERROR ON ELF STATE TREE")
 
 func animation_handler()->int:
 	var frame:int = $AnimatedSprite2D.frame
@@ -80,7 +81,6 @@ func animation_handler()->int:
 
 func _on_death() -> void:
 	change_state(DEAD)
-	$HurtBox.disable()
 	$HealthBox.disable()
 
 

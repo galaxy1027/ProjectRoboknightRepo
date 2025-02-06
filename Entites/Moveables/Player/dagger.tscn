@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmp1d6ra34mn3"]
+
+[ext_resource type="Texture2D" uid="uid://xyiq5utao6ih" path="res://Assets/spritesheets/dagger.png" id="1_7mict"]
+[ext_resource type="Script" path="res://Entites/Moveables/Player/dagger.gd" id="1_emdd4"]
+[ext_resource type="PackedScene" uid="uid://br7nn3rrtebvx" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/hurt_box.tscn" id="2_o7scg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v03n8"]
+size = Vector2(31, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4fpc"]
+size = Vector2(20, 128)
+
+[node name="Dagger" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 20
+script = ExtResource("1_emdd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.8, 1)
+texture = ExtResource("1_7mict")
+
+[node name="HurtBox" parent="." instance=ExtResource("2_o7scg")]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
+position = Vector2(-0.5, -8.5)
+shape = SubResource("RectangleShape2D_v03n8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_u4fpc")

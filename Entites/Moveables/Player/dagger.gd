@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
-@export var SPEED:float = 100.0
+@export var SPEED:float = 900.0
 
 var direction:Vector2
 
 func _ready() -> void:
-	# point in direction and set velocity to direction
-	self.look_at(direction)
+	$Sprite2D.flip_h = true
 	
 	velocity.x = SPEED*cos(rotation)
 	velocity.y = SPEED*sin(rotation)

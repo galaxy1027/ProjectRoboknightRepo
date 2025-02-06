@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://olwvmmtmu66m"]
+
+[ext_resource type="PackedScene" uid="uid://crjs5qt8qgkor" path="res://Entites/Moveables/Player/Player.tscn" id="1_2xumi"]
+[ext_resource type="PackedScene" uid="uid://c1fmscmmgu11t" path="res://Entites/Moveables/Enemies/Elf/CyberElf.tscn" id="2_tybup"]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_2xumi")]
+position = Vector2(5, 0)
+
+[node name="CyberElf" parent="." instance=ExtResource("2_tybup")]
+position = Vector2(2074, -50)
