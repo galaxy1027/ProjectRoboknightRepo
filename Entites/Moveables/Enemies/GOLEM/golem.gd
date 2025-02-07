@@ -56,8 +56,6 @@ func animation_handler()->int:
 func _on_death() -> void:
 	velocity = Vector2.ZERO
 	change_state(DEAD)
-	$HurtBox.disable()
-	$HealthBox.disable()
 	self.queue_free()
 
 # When player is in range

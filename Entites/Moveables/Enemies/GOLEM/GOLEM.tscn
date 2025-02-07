@@ -116,7 +116,6 @@ frame_progress = 0.597488
 collision_layer = 16
 health_bar = NodePath("ProgressBar")
 max_health = 200
-defence = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="HealthBox"]
 offset_left = -60.0
