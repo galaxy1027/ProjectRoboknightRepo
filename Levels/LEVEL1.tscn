@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://chisf2l6k2uby"]
+[gd_scene load_steps=6 format=4 uid="uid://chisf2l6k2uby"]
 
 [ext_resource type="TileSet" uid="uid://cqxc1ecu6ih1n" path="res://Entites/Statics/TileSet.tres" id="1_buhuo"]
 [ext_resource type="PackedScene" uid="uid://dst12hsmflu7j" path="res://Levels/HOLE.tscn" id="1_ntbuc"]
+[ext_resource type="PackedScene" uid="uid://bmrl7o8ifdcrc" path="res://Entites/Moveables/Enemies/GOLEM/GOLEM.tscn" id="2_6n2b1"]
 [ext_resource type="PackedScene" uid="uid://d4gn67wgael86" path="res://Entites/Moveables/Enemies/Goblin/Goblin.tscn" id="3_a16yc"]
 [ext_resource type="PackedScene" uid="uid://crjs5qt8qgkor" path="res://Entites/Moveables/Player/Player.tscn" id="6_1mn0s"]
 
@@ -19,6 +20,45 @@ metadata/_edit_lock_ = true
 
 [node name="ENY" type="Node2D" parent="."]
 
+[node name="Golem" parent="ENY" instance=ExtResource("2_6n2b1")]
+position = Vector2(1404, -158)
+
+[node name="Golem2" parent="ENY" instance=ExtResource("2_6n2b1")]
+position = Vector2(1404, 528)
+
+[node name="Golem3" parent="ENY" instance=ExtResource("2_6n2b1")]
+position = Vector2(1888, 1294)
+
+[node name="Golem4" parent="ENY" instance=ExtResource("2_6n2b1")]
+position = Vector2(2392, 1657)
+
+[node name="CyberGoblin2" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(-732, 1838)
+
+[node name="CyberGoblin3" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(-490, 2483)
+
+[node name="CyberGoblin4" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(34, 2382)
+
+[node name="CyberGoblin6" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(-1256, 2685)
+
+[node name="CyberGoblin7" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(-1377, 2141)
+
+[node name="CyberGoblin8" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(-1458, 1596)
+
+[node name="CyberGoblin9" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(-87, 1112)
+
+[node name="CyberGoblin11" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(276, 1858)
+
+[node name="CyberGoblin12" parent="ENY" instance=ExtResource("3_a16yc")]
+position = Vector2(800, 2282)
+
 [node name="CyberGoblin" parent="ENY" instance=ExtResource("3_a16yc")]
 position = Vector2(-4985, 2395)
 
@@ -32,4 +72,4 @@ position = Vector2(-5702, 1871)
 next_level = "res://Levels/LEVEL2.tscn"
 
 [node name="Player" parent="." instance=ExtResource("6_1mn0s")]
-position = Vector2(-445, 332)
+position = Vector2(-317, 4348)
