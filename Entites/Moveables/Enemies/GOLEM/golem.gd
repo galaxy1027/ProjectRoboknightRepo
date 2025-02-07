@@ -12,10 +12,6 @@ func _state_handler()->void:
 	var frame = animation_handler()
 	match STATE:
 		DEAD:
-			if $AnimatedSprite2D.animation != "DIE":
-				$AnimatedSprite2D.play("DIE")
-			elif $AnimatedSprite2D.frame == 4:
-				self.queue_free()
 			pass
 		IDLE:
 			if target != null:
@@ -62,6 +58,7 @@ func _on_death() -> void:
 	change_state(DEAD)
 	$HurtBox.disable()
 	$HealthBox.disable()
+	self.queue_free()
 
 # When player is in range
 func _on_player_body_entered(body: Node2D) -> void:

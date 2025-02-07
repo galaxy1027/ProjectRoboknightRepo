@@ -156,6 +156,7 @@ visible = false
 wait_time = 0.1
 one_shot = true
 
+[connection signal="on_death" from="HealthBox" to="." method="_on_death"]
 [connection signal="body_entered" from="Player_Detector" to="." method="_on_player_body_entered"]
 [connection signal="body_exited" from="Player_Detector" to="." method="_on_player_body_exited"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
