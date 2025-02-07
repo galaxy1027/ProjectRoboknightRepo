@@ -474,10 +474,13 @@ position = Vector2(7, -4)
 collision_layer = 4
 script = ExtResource("1_1b6ko")
 MY_HEALTH = NodePath("HealthBox")
+_MAX_SPEED = 150.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a3kds")
-animation = &"WALK_F"
+animation = &"ATTK_L"
+frame = 6
+frame_progress = 1.0
 metadata/_edit_lock_ = true
 
 [node name="HealthBox" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_6ouxf")]
@@ -501,12 +504,18 @@ value = 25.0
 show_percentage = false
 
 [node name="Player_Detector" parent="." instance=ExtResource("4_lsyn0")]
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(-4, 85.5)
 shape = SubResource("RectangleShape2D_28eam")
 
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="on_death" from="HealthBox" to="." method="_on_death"]
 [connection signal="body_entered" from="Player_Detector" to="." method="_on_player_body_entered"]
 [connection signal="body_exited" from="Player_Detector" to="." method="_on_player_body_exited"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

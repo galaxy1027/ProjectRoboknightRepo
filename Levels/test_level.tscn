@@ -6,7 +6,25 @@
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2xumi")]
-position = Vector2(5, 0)
+position = Vector2(796, -6)
 
 [node name="CyberElf" parent="." instance=ExtResource("2_tybup")]
 position = Vector2(2074, -50)
+
+[node name="CyberElf2" parent="." instance=ExtResource("2_tybup")]
+position = Vector2(-79, -811)
+
+[node name="CyberElf3" parent="." instance=ExtResource("2_tybup")]
+position = Vector2(2131, -680)
+
+[node name="CyberElf4" parent="." instance=ExtResource("2_tybup")]
+position = Vector2(816, 921)
+
+[node name="CyberElf5" parent="." instance=ExtResource("2_tybup")]
+position = Vector2(-459, -54)
+
+[node name="CyberElf6" parent="." instance=ExtResource("2_tybup")]
+position = Vector2(-506, 763)
+
+[node name="CyberElf7" parent="." instance=ExtResource("2_tybup")]
+position = Vector2(601, -556)

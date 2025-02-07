@@ -323,6 +323,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_n7wha")
+max_Speed = 500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eis0i")
@@ -344,6 +345,7 @@ shape = SubResource("RectangleShape2D_dfugp")
 
 [node name="cooldown" type="Timer" parent="."]
 wait_time = 0.5
+one_shot = true
 
 [node name="pivot" type="Marker2D" parent="."]
 position = Vector2(0, 1)

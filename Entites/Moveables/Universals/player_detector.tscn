@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dk3m70j2brbc3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq7hh"]
-size = Vector2(2000, 2000)
+size = Vector2(2000, 1500)
 
 [node name="Player_Detector" type="Area2D"]
 collision_layer = 0

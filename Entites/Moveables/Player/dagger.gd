@@ -13,5 +13,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
-	if abs(velocity.x) < 1 and abs(velocity.y) < 1:
+	if abs(velocity.x) < 30 and abs(velocity.y) < 30:
 		queue_free()
+
+
+func _on_hurt_box_i_hit() -> void:
+	queue_free()

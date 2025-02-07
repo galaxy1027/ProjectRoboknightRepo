@@ -31,3 +31,5 @@ shape = SubResource("RectangleShape2D_v03n8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_u4fpc")
+
+[connection signal="i_hit" from="HurtBox" to="." method="_on_hurt_box_i_hit"]

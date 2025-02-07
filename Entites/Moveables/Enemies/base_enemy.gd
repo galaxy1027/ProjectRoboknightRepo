@@ -34,6 +34,7 @@ var STATE_P:int = STATE
 
 ## A function to keep track of state changes 
 func change_state(new_state:int)->void:
+	#print_debug(new_state)
 	if STATE != DEAD:
 		STATE = new_state
 
@@ -42,8 +43,8 @@ func go_to(destination:Vector2)->Vector2:
 	var direction = position.direction_to(destination)
 	
 	var return_velocity = velocity
-	return_velocity.y = move_toward(velocity.y, direction.y*_ACCELERATION, _MAX_SPEED)
-	return_velocity.x = move_toward(velocity.x, direction.x*_ACCELERATION, _MAX_SPEED)
+	return_velocity.y = move_toward(velocity.y, direction.y*_MAX_SPEED, _ACCELERATION)
+	return_velocity.x = move_toward(velocity.x, direction.x*_MAX_SPEED, _ACCELERATION)
 	return return_velocity
 
 ## Checks if given position is to the left of the enemy
