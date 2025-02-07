@@ -23,6 +23,7 @@ func _state_handler()->void:
 			if target != null:
 				change_state(PURSUING)
 		PURSUING:
+			direction = target.global_position - self.global_position
 			# When get to a distance shoot at player
 			if global_position.distance_to(target.global_position) < 1000:
 				velocity = Vector2.ZERO
@@ -96,7 +97,6 @@ func _on_death() -> void:
 
 # When player is in range
 func _on_player_body_entered(body: Node2D) -> void:
-	print("BODH!")
 	target = body
 
 # When player is out of range

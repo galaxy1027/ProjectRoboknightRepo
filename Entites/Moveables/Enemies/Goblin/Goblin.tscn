@@ -1,9 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://d4gn67wgael86"]
+[gd_scene load_steps=66 format=3 uid="uid://d4gn67wgael86"]
 
 [ext_resource type="Script" path="res://Entites/Moveables/Enemies/Goblin/cyvergoblin.gd" id="1_wwsx2"]
 [ext_resource type="PackedScene" uid="uid://dspc8ps35sdl4" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/health.tscn" id="2_m6lhs"]
 [ext_resource type="Texture2D" uid="uid://cludsouq3vkv6" path="res://Assets/spritesheets/CyberGoblin.png" id="2_s75v5"]
 [ext_resource type="PackedScene" uid="uid://br7nn3rrtebvx" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/hurt_box.tscn" id="3_mwuej"]
+[ext_resource type="PackedScene" uid="uid://dk3m70j2brbc3" path="res://Entites/Moveables/Universals/player_detector.tscn" id="5_vm5tu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hm2n7"]
 atlas = ExtResource("2_s75v5")
@@ -427,10 +428,35 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw78j"]
 size = Vector2(78, 137)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qftpc"]
+bg_color = Color(0, 0, 0, 0.505882)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31401, 2.40654e-07, 9.62615e-08, 0.713726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bw3ry"]
+bg_color = Color(0.315887, 3.06834e-07, 0.0714133, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.313726, 0, 0, 0.713726)
+
+[sub_resource type="Theme" id="Theme_4ru1m"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_qftpc")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_bw3ry")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eqg2"]
+size = Vector2(130, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7uwv"]
+size = Vector2(230, 100)
+
 [node name="CyberGoblin" type="CharacterBody2D" node_paths=PackedStringArray("MY_HEALTH")]
 collision_layer = 4
 script = ExtResource("1_wwsx2")
 MY_HEALTH = NodePath("HealthBox")
+_MAX_SPEED = 800.0
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -446,20 +472,41 @@ metadata/_edit_lock_ = true
 
 [node name="HealthBox" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("2_m6lhs")]
 collision_layer = 16
-health_bar = NodePath("../ProgressBar")
+health_bar = NodePath("ProgressBar")
 max_health = 25
 metadata/_edit_lock_ = true
 
+[node name="ProgressBar" type="ProgressBar" parent="HealthBox"]
+offset_left = -60.0
+offset_top = -96.0
+offset_right = 51.0
+offset_bottom = -69.0
+theme = SubResource("Theme_4ru1m")
+value = 25.0
+show_percentage = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthBox"]
+visible = false
+position = Vector2(0, 55.5)
+shape = SubResource("RectangleShape2D_4eqg2")
+
 [node name="HurtBox" parent="." instance=ExtResource("3_mwuej")]
 collision_mask = 8
+monitoring = false
 metadata/_edit_lock_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 visible = false
-offset_right = 4.0
-offset_bottom = 27.0
+position = Vector2(-62, 12)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_e7uwv")
 
-[node name="PlayerDetector" type="Area2D" parent="."]
+[node name="Player_Detector" parent="." instance=ExtResource("5_vm5tu")]
+visible = false
+
+[node name="cooldown" type="Timer" parent="."]
 
 [connection signal="on_death" from="HealthBox" to="." method="_on_death"]
-[connection signal="body_entered" from="PlayerDetector" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Player_Detector" to="." method="_on_player_body_entered"]
+[connection signal="body_exited" from="Player_Detector" to="." method="_on_player_body_exited"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
