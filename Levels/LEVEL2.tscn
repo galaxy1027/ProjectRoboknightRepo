@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bj4hvqvqrdqpw"]
+[gd_scene load_steps=10 format=4 uid="uid://bj4hvqvqrdqpw"]
 
 [ext_resource type="TileSet" uid="uid://cqxc1ecu6ih1n" path="res://Entites/Statics/TileSet.tres" id="1_cb50v"]
 [ext_resource type="PackedScene" uid="uid://dst12hsmflu7j" path="res://Levels/HOLE.tscn" id="2_1p3ix"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://crjs5qt8qgkor" path="res://Entites/Moveables/Player/Player.tscn" id="3_8ldir"]
 [ext_resource type="PackedScene" uid="uid://d4gn67wgael86" path="res://Entites/Moveables/Enemies/Goblin/Goblin.tscn" id="3_xw3aj"]
 [ext_resource type="PackedScene" uid="uid://c1fmscmmgu11t" path="res://Entites/Moveables/Enemies/Elf/CyberElf.tscn" id="4_1hdc4"]
+[ext_resource type="AudioStream" uid="uid://cm14b6lwsfijs" path="res://Assets/Music/basictheme.mp3" id="7_3pf4p"]
+[ext_resource type="Texture2D" uid="uid://d264ridughsg" path="res://Assets/spritesheets/Ammo.png" id="7_cs4k3"]
+[ext_resource type="Texture2D" uid="uid://bhos37o4i5ae8" path="res://Assets/spritesheets/MiniGun.png" id="8_srqi3"]
 
 [node name="Level2" type="Node2D"]
 
@@ -101,3 +104,21 @@ next_level = "res://Levels/transition1.tscn"
 
 [node name="Player" parent="." instance=ExtResource("3_8ldir")]
 position = Vector2(1168, 11614)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-1168, -11614)
+stream = ExtResource("7_3pf4p")
+volume_db = -18.888
+autoplay = true
+max_distance = 1e+06
+attenuation = 0.0
+
+[node name="Ammo" type="Sprite2D" parent="."]
+position = Vector2(-386, -230)
+texture = ExtResource("7_cs4k3")
+
+[node name="MiniGun" type="Sprite2D" parent="."]
+position = Vector2(-405, -93)
+texture = ExtResource("8_srqi3")
+region_enabled = true
+region_rect = Rect2(270.359, 298.923, 241.641, 177.333)
