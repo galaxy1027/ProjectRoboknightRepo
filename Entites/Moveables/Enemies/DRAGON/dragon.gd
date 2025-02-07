@@ -165,8 +165,9 @@ func _on_body_animation_finished() -> void:
 func _on_cooldown_timeout() -> void:
 	_cooldown = false
 
-
+var quick = preload("res://Assets/Music/RetroFury_Triumph.mp3")
 func _on_death() -> void:
+	get_parent().get_node("AudioStreamPlayer2D").set_stream(quick)
 	change_state(DEAD)
 	$BODY.play("DIE")
 	$HEAD.play("DIE")
