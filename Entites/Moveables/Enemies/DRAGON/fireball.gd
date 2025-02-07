@@ -4,13 +4,16 @@ extends CharacterBody2D
 
 var direction:Vector2
 
+var _max_speed:Vector2
+
 func _ready() -> void:
 	$Timer.start()
 	# point in direction and set velocity to direction
 	self.look_at(direction)
 	
-	velocity.x = SPEED*cos(rotation)
-	velocity.y = SPEED*sin(rotation)
+	_max_speed = Vector2(SPEED*cos(rotation),SPEED*sin(rotation))
+	velocity.x = _max_speed.x
+	velocity.y = _max_speed.y
 
 
 var distance:float = 0
@@ -22,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		die()
 	
 	
-	if abs(velocity.x) < 1 and abs(velocity.y) < 1:
+	if abs(velocity.x) < abs(_max_speed.x) or abs(velocity.y) < abs(_max_speed.y):
 		die()
 
 
@@ -32,6 +35,7 @@ func _on_timer_timeout() -> void:
 	
 
 func die()->void:
+	velocity = Vector2.ZERO
 	if $AnimatedSprite2D.animation != "DIE":
 		$CollisionShape2D.set_deferred("disabled", true)
 		$HurtBox.disable()
@@ -40,5 +44,4 @@ func die()->void:
 		self.queue_free()
 
 func _on_hurt_box_i_hit() -> void:
-	velocity = Vector2.ZERO
 	die()

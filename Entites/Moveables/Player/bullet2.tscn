@@ -9,7 +9,7 @@ size = Vector2(30, 6)
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 0
-collision_mask = 16
+collision_mask = 17
 script = ExtResource("1_hffra")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

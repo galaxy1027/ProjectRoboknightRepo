@@ -4,11 +4,14 @@ extends CharacterBody2D
 
 var direction:Vector2
 
+var _max_speed:Vector2
+
 func _ready() -> void:
 	$Sprite2D.flip_h = true
 	
-	velocity.x = SPEED*cos(rotation)
-	velocity.y = SPEED*sin(rotation)
+	_max_speed = Vector2(SPEED*cos(rotation),SPEED*sin(rotation))
+	velocity.x = _max_speed.x
+	velocity.y = _max_speed.y
 
 var distance:float = 0
 func _physics_process(delta: float) -> void:
@@ -17,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	if distance > 5000:
 		queue_free()
 	
-	if abs(velocity.x) < 30 and abs(velocity.y) < 30:
+	if abs(velocity.x) < abs(_max_speed.x) or abs(velocity.y) < abs(_max_speed.y):
 		queue_free()
 
 
