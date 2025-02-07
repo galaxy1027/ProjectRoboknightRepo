@@ -39,6 +39,9 @@ func disable()->void:
 	if self.monitoring == true:
 		self.set_deferred("monitoring", false)
 
+func hit_him():
+	emit_signal("hit", _damage, _knockback_strength, 0)
+
 ## If a health area is detected the hit signal is connected and emited.
 func _on_area_entered(area: Area2D) -> void:
 	if area.name.containsn("hit") or area.name.containsn("health"):
@@ -49,5 +52,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 ## When a health area leaves the hurt box the signal is disconnected
 func _on_area_exited(area: Area2D) -> void:
-	if area.name.containsn("hit") and self.hit.is_connected(area._on_hit):
+	if self.hit.is_connected(area._on_hit):
+		print(area.name)
 		self.hit.disconnect(area._on_hit)

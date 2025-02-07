@@ -1,42 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpm4g1dw3j886"]
+[gd_scene load_steps=4 format=3 uid="uid://bpvbk3rrf3it1"]
 
-[ext_resource type="Script" path="res://Levels/death.gd" id="1_cbm8p"]
-[ext_resource type="Texture2D" uid="uid://odigft6sttkr" path="res://Assets/spritesheets/PurpleKnightFallen_128x64.png" id="1_clc0u"]
+[ext_resource type="Texture2D" uid="uid://lbqdd61cqfp0" path="res://Assets/spritesheets/PurpleKnightEnd128.png" id="1_aisyx"]
+[ext_resource type="Script" path="res://Levels/end.gd" id="1_jjioi"]
 
-[sub_resource type="Theme" id="Theme_w7j34"]
+[sub_resource type="Theme" id="Theme_8q1cu"]
 Label/font_sizes/font_size = 64
 
-[node name="Death" type="Control"]
-process_mode = 3
-visible = false
-z_index = 1
+[node name="End" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cbm8p")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(558, 324.5)
-enabled = false
+script = ExtResource("1_jjioi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(558, 324.5)
-scale = Vector2(0.32, 0.3225)
-texture = ExtResource("1_clc0u")
+position = Vector2(558, 321)
+scale = Vector2(0.32, 0.326)
+texture = ExtResource("1_aisyx")
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 541.0
 offset_right = 289.0
 offset_bottom = 610.0
 focus_neighbor_right = NodePath("../Button2")
 disabled = true
-text = "RETRY"
+text = "PLAY AGIAN"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 911.0
 offset_top = 539.0
 offset_right = 1121.0
@@ -46,12 +41,13 @@ disabled = true
 text = "EXIT"
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 278.0
 offset_top = 51.0
 offset_right = 880.0
 offset_bottom = 147.0
-theme = SubResource("Theme_w7j34")
-text = "YOU DIED"
+theme = SubResource("Theme_8q1cu")
+text = "YOU WIN"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

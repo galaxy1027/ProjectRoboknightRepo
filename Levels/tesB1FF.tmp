@@ -16,12 +16,12 @@ tile_set = ExtResource("1_pape5")
 tile_map_data = PackedByteArray("AAD4////AAADAAMAAAAIAAEAAAAEAAMAAAAHAPz/AAAAAAQAAAD2/wUAAAAAAAQAAAA=")
 tile_set = ExtResource("1_pape5")
 
+[node name="Dragon" parent="." instance=ExtResource("2_vmxku")]
+position = Vector2(26, -1115)
+
 [node name="Player" parent="." instance=ExtResource("3_t72r0")]
 position = Vector2(-10, 1189)
 max_Speed = 700.0
-
-[node name="Dragon" parent="." instance=ExtResource("2_vmxku")]
-position = Vector2(26, -1115)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.18, 0.18)

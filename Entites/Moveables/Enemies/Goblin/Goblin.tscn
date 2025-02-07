@@ -428,7 +428,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yw78j"]
 size = Vector2(78, 137)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qftpc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a5ny"]
 bg_color = Color(0, 0, 0, 0.505882)
 border_width_left = 2
 border_width_top = 2
@@ -436,15 +436,15 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.31401, 2.40654e-07, 9.62615e-08, 0.713726)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bw3ry"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rt1wh"]
 bg_color = Color(0.315887, 3.06834e-07, 0.0714133, 1)
 border_width_top = 2
 border_width_bottom = 2
 border_color = Color(0.313726, 0, 0, 0.713726)
 
 [sub_resource type="Theme" id="Theme_4ru1m"]
-ProgressBar/styles/background = SubResource("StyleBoxFlat_qftpc")
-ProgressBar/styles/fill = SubResource("StyleBoxFlat_bw3ry")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_8a5ny")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_rt1wh")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eqg2"]
 size = Vector2(130, 143)

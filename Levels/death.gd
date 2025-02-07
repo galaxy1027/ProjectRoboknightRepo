@@ -5,8 +5,11 @@ func _ready() -> void:
 	pass
 
 func _on_player_died():
+	print("HE DIED")
 	get_tree().paused = true
-	show()
+	$Camera2D.enabled = true
+	$Camera2D.make_current()
+	self.visible = true
 	$Button.disabled = false
 	$Button2.disabled = false
 

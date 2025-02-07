@@ -13,18 +13,23 @@ max_Speed = 700.0
 
 [node name="CyberGoblin" parent="." instance=ExtResource("2_e0pn3")]
 position = Vector2(1547, 594)
+_ACCELERATION = null
 
 [node name="CyberGoblin2" parent="." instance=ExtResource("2_e0pn3")]
 position = Vector2(-1693, 1403)
+_ACCELERATION = null
 
 [node name="CyberGoblin3" parent="." instance=ExtResource("2_e0pn3")]
 position = Vector2(-1613, -973)
+_ACCELERATION = null
 
 [node name="CyberGoblin4" parent="." instance=ExtResource("2_e0pn3")]
 position = Vector2(2259, -1069)
+_ACCELERATION = null
 
 [node name="CyberGoblin5" parent="." instance=ExtResource("2_e0pn3")]
 position = Vector2(-2101, -173)
+_ACCELERATION = null
 
 [node name="CyberElf" parent="." instance=ExtResource("3_25hc1")]
 position = Vector2(2202, 1800)

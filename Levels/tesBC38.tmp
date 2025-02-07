@@ -43,3 +43,5 @@ position = Vector2(-1686, 2366)
 
 [node name="Golem" parent="." instance=ExtResource("4_yy5hm")]
 position = Vector2(363, 1088)
+_MAX_SPEED = 100.0
+_ACCELERATION = 80.0
