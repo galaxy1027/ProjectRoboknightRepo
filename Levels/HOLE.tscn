@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dst12hsmflu7j"]
+
+[ext_resource type="Script" path="res://Levels/hole.gd" id="1_n7vo2"]
+[ext_resource type="Texture2D" uid="uid://c48bx6lfdwd7f" path="res://Assets/spritesheets/ExitLatch.png" id="1_yja1g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6in87"]
+atlas = ExtResource("1_yja1g")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hb3g"]
+atlas = ExtResource("1_yja1g")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3wh2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6in87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hb3g")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ym1vo"]
+radius = 121.103
+
+[node name="Hole" type="Node2D"]
+script = ExtResource("1_n7vo2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h3wh2")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 10
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ym1vo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

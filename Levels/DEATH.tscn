@@ -28,6 +28,7 @@ scale = Vector2(0.32, 0.3225)
 texture = ExtResource("1_clc0u")
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 541.0
 offset_right = 289.0
@@ -37,6 +38,7 @@ disabled = true
 text = "RETRY"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 911.0
 offset_top = 539.0
 offset_right = 1121.0
@@ -46,6 +48,7 @@ disabled = true
 text = "EXIT"
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 278.0
 offset_top = 51.0
 offset_right = 880.0

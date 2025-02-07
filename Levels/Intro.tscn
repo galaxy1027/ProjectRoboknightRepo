@@ -30,6 +30,7 @@ focus_neighbor_right = NodePath("../Button2")
 text = "START"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 911.0
 offset_top = 539.0
 offset_right = 1121.0
