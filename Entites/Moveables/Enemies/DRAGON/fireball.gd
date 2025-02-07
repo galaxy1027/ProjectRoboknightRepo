@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED:float = 800.0
+@export var SPEED:float = 1200.0
 
 var direction:Vector2
 
@@ -19,19 +19,26 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if distance > 5000:
-		queue_free()
+		die()
 	
 	
 	if abs(velocity.x) < 1 and abs(velocity.y) < 1:
-		queue_free()
+		die()
 
 
 func _on_timer_timeout() -> void:
 	$CollisionShape2D.set_deferred("disabled", false)
-	$hurt_box.enable()
+	$HurtBox.enable()
 	
 
+func die()->void:
+	if $AnimatedSprite2D.animation != "DIE":
+		$CollisionShape2D.set_deferred("disabled", true)
+		$HurtBox.disable()
+		$AnimatedSprite2D.play("DIE")
+	elif $AnimatedSprite2D.frame == 3:
+		self.queue_free()
 
 func _on_hurt_box_i_hit() -> void:
 	velocity = Vector2.ZERO
-	queue_free()
+	die()

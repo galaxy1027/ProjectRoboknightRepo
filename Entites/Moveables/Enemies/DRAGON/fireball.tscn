@@ -1,0 +1,141 @@
+[gd_scene load_steps=19 format=3 uid="uid://dpqki61kf1lk8"]
+
+[ext_resource type="Script" path="res://Entites/Moveables/Enemies/DRAGON/fireball.gd" id="1_2t0ts"]
+[ext_resource type="Texture2D" uid="uid://eh4gqkgxm7gq" path="res://Assets/spritesheets/Fireball.png" id="1_g6bjt"]
+[ext_resource type="PackedScene" uid="uid://br7nn3rrtebvx" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/hurt_box.tscn" id="2_erpy2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85mw6"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edd2u"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqilq"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr1b4"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvaap"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5kpm"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxhdd"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfwkn"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5h84"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avpmt"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlgc2"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anomk"]
+atlas = ExtResource("1_g6bjt")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8bkn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85mw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edd2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqilq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr1b4")
+}],
+"loop": false,
+"name": &"DIE",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvaap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5kpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxhdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfwkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5h84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avpmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlgc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anomk")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 21.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3voat"]
+radius = 90.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqn88"]
+radius = 64.0703
+
+[node name="Fireball" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 24
+script = ExtResource("1_2t0ts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -2)
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_x8bkn")
+animation = &"DIE"
+autoplay = "IDLE"
+
+[node name="HurtBox" parent="." instance=ExtResource("2_erpy2")]
+collision_mask = 8
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
+position = Vector2(5, 13)
+shape = SubResource("CircleShape2D_3voat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(6, 15)
+shape = SubResource("CircleShape2D_dqn88")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="i_hit" from="HurtBox" to="." method="_on_hurt_box_i_hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

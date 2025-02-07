@@ -1,30 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://olwvmmtmu66m"]
 
 [ext_resource type="PackedScene" uid="uid://crjs5qt8qgkor" path="res://Entites/Moveables/Player/Player.tscn" id="1_2xumi"]
-[ext_resource type="PackedScene" uid="uid://c1fmscmmgu11t" path="res://Entites/Moveables/Enemies/Elf/CyberElf.tscn" id="2_tybup"]
+[ext_resource type="PackedScene" uid="uid://cuaxv1qmiva30" path="res://Entites/Moveables/Enemies/DRAGON/DRAGON.tscn" id="2_v7786"]
 
 [node name="TestLevel" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_2xumi")]
 position = Vector2(796, -6)
+max_Speed = 800.0
 
-[node name="CyberElf" parent="." instance=ExtResource("2_tybup")]
-position = Vector2(2074, -50)
-
-[node name="CyberElf2" parent="." instance=ExtResource("2_tybup")]
-position = Vector2(-79, -811)
-
-[node name="CyberElf3" parent="." instance=ExtResource("2_tybup")]
-position = Vector2(2131, -680)
-
-[node name="CyberElf4" parent="." instance=ExtResource("2_tybup")]
-position = Vector2(816, 921)
-
-[node name="CyberElf5" parent="." instance=ExtResource("2_tybup")]
-position = Vector2(-459, -54)
-
-[node name="CyberElf6" parent="." instance=ExtResource("2_tybup")]
-position = Vector2(-506, 763)
-
-[node name="CyberElf7" parent="." instance=ExtResource("2_tybup")]
-position = Vector2(601, -556)
+[node name="Dragon" parent="." instance=ExtResource("2_v7786")]
+position = Vector2(698, -1137)

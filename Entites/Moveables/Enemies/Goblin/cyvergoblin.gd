@@ -2,7 +2,7 @@ extends base_enemy
 
 class_name CyberGoblin
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_state_handler()
 	move_and_slide()
 

@@ -43,6 +43,7 @@ func _ready() -> void:
 	
 	my_health = max_health
 	health_bar.set_visible(true)
+	health_bar.max_value = max_health
 	health_bar.value = my_health
 
 ## When this function is called it will set _dead to true and emit on_death

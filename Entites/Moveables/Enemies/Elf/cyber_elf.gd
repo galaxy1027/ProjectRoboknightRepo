@@ -6,7 +6,7 @@ const bullet := preload("res://Entites/Moveables/Enemies/Elf/bullet.tscn")
 
 var cooldown:bool = false
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_state_handler()
 	move_and_slide()
 
