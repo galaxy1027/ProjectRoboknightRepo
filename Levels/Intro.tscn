@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ndde5oabkbx"]
+
+[ext_resource type="Texture2D" uid="uid://dnhftrdow1lbx" path="res://Assets/spritesheets/PurpleKnightStart128.png" id="1_03f5i"]
+[ext_resource type="Script" path="res://Levels/intro.gd" id="1_fsmd7"]
+
+[sub_resource type="Theme" id="Theme_soml8"]
+Label/font_sizes/font_size = 64
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fsmd7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(578, 327)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("1_03f5i")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 541.0
+offset_right = 289.0
+offset_bottom = 610.0
+focus_neighbor_right = NodePath("../Button2")
+text = "START"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 911.0
+offset_top = 539.0
+offset_right = 1121.0
+offset_bottom = 609.0
+focus_neighbor_right = NodePath("../Button")
+text = "EXIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 51.0
+offset_right = 880.0
+offset_bottom = 147.0
+theme = SubResource("Theme_soml8")
+text = "KILL DRAGON
+SAVE WORLD"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

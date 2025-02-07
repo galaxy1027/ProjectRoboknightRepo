@@ -16,11 +16,13 @@ const phase_3:Array[float] = [5,55,.05,.1,.4]
 
 func _ready() -> void:
 	target = get_parent().get_node("./Player")
+	target.global_position
 
 
-
+var target_last_location:Vector2 = Vector2.ZERO
 func _physics_process(delta: float) -> void:
 	_state_handler()
+	target_last_location = target.global_position
 	pass
 	
 
@@ -46,7 +48,7 @@ func _state_handler()->void:
 			if frame == 4:
 				var new_fireball := fireball.instantiate()
 				# set direction to target
-				new_fireball.direction = target.global_position
+				new_fireball.direction = target.global_position + 50*(target.global_position - target_last_location)
 				# spawn in bullet
 				new_fireball.global_position = $HEAD/Marker2D.global_position
 				get_parent().add_child(new_fireball)
@@ -68,7 +70,7 @@ func _state_handler()->void:
 			elif frame == 4:
 				var new_fireball := fireball.instantiate()
 				# set direction to target
-				new_fireball.direction = Vector2(target.global_position.x + rand.randi_range(-100,100), target.global_position.y)
+				new_fireball.direction = Vector2(target.global_position.x + rand.randi_range(-500,500), target.global_position.y)
 				# spawn in bullet
 				new_fireball.global_position = $HEAD/Marker2D.global_position
 				get_parent().add_child(new_fireball)
@@ -90,7 +92,7 @@ func _state_handler()->void:
 			elif frame == 4:
 				var new_fireball := fireball.instantiate()
 				# set direction to target
-				new_fireball.direction = Vector2(target.global_position.x + rand.randi_range(-100,100), target.global_position.y)
+				new_fireball.direction = target.global_position + 90*(target.global_position - target_last_location)
 				# spawn in bullet
 				new_fireball.global_position = $HEAD/Marker2D.global_position
 				get_parent().add_child(new_fireball)
