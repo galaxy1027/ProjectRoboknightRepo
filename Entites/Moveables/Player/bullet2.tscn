@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://daa2qum7cb5pq"]
+
+[ext_resource type="Script" path="res://Entites/Moveables/Player/bullet2.gd" id="1_hffra"]
+[ext_resource type="Texture2D" uid="uid://bdkkm2vxur2l" path="res://Assets/spritesheets/bullet.png" id="2_i8qos"]
+[ext_resource type="Script" path="res://Entites/Moveables/Universals/Damage_and_Health_Nodes/scripts/hurt_box.gd" id="3_7go44"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bfsj"]
+size = Vector2(30, 6)
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_hffra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_i8qos")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_6bfsj")
+
+[node name="hurt_box" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("3_7go44")
+_knockback_strength = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+visible = false
+shape = SubResource("RectangleShape2D_6bfsj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="i_hit" from="hurt_box" to="." method="_on_hurt_box_i_hit"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

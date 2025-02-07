@@ -17,7 +17,7 @@ signal knock_back(direction:Vector2, weight:float)
 ## The amount of health the entity currently has
 var my_health:int = 0
 ## This value will divide the damage recived so that it's less
-var defence:int = 1
+@export var defence:int = 1
 ## When this is true the script will stop functioning
 var _dead:bool = false
 

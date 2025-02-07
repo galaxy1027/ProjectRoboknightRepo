@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://olwvmmtmu66m"]
 
-[ext_resource type="PackedScene" uid="uid://crjs5qt8qgkor" path="res://Entites/Moveables/Player/Player.tscn" id="1_2xumi"]
+[ext_resource type="PackedScene" uid="uid://c3sl8db2d2m5u" path="res://Entites/Moveables/Player/GIGAPlayer.tscn" id="2_5mmr3"]
 [ext_resource type="PackedScene" uid="uid://cuaxv1qmiva30" path="res://Entites/Moveables/Enemies/DRAGON/DRAGON.tscn" id="2_v7786"]
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_2xumi")]
-position = Vector2(796, -6)
-max_Speed = 800.0
-
 [node name="Dragon" parent="." instance=ExtResource("2_v7786")]
-position = Vector2(698, -1137)
+position = Vector2(13, -1238)
+
+[node name="Player" parent="." instance=ExtResource("2_5mmr3")]
+position = Vector2(-10, 1189)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.2, 0.2)

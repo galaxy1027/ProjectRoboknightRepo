@@ -322,7 +322,7 @@ metadata/_edit_lock_ = true
 [node name="HEAD" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7, 100)
 sprite_frames = SubResource("SpriteFrames_1s73h")
-animation = &"DIE"
+animation = &"FACE"
 
 [node name="Marker2D" type="Marker2D" parent="HEAD"]
 position = Vector2(-39, 85)
@@ -334,7 +334,8 @@ collision_layer = 16
 collision_mask = 0
 script = ExtResource("4_gv6ws")
 health_bar = NodePath("../CanvasLayer/ProgressBar")
-max_health = 500
+max_health = 1000
+defence = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="health"]
