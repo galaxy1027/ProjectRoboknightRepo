@@ -94,3 +94,7 @@ func _on_knock_back(direction:Vector2, weight:float) -> void:
 func _on_cooldown_timeout() -> void:
 	$pivot/knife.set_deferred("visible", true)
 	_cooldown = false
+
+
+func _on_animation_DEADplayer_animation_finished(anim_name: StringName) -> void:
+	emit_signal("_i_died")
