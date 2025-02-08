@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://chisf2l6k2uby"]
+[gd_scene load_steps=7 format=4 uid="uid://chisf2l6k2uby"]
 
 [ext_resource type="TileSet" uid="uid://cqxc1ecu6ih1n" path="res://Entites/Statics/TileSet.tres" id="1_buhuo"]
 [ext_resource type="PackedScene" uid="uid://dst12hsmflu7j" path="res://Levels/HOLE.tscn" id="1_ntbuc"]
 [ext_resource type="PackedScene" uid="uid://bmrl7o8ifdcrc" path="res://Entites/Moveables/Enemies/GOLEM/GOLEM.tscn" id="2_6n2b1"]
 [ext_resource type="PackedScene" uid="uid://d4gn67wgael86" path="res://Entites/Moveables/Enemies/Goblin/Goblin.tscn" id="3_a16yc"]
 [ext_resource type="PackedScene" uid="uid://crjs5qt8qgkor" path="res://Entites/Moveables/Player/Player.tscn" id="6_1mn0s"]
+[ext_resource type="AudioStream" uid="uid://cm14b6lwsfijs" path="res://Assets/Music/basictheme.mp3" id="6_5lsuv"]
 
 [node name="Level1" type="Node2D"]
 
@@ -73,3 +74,11 @@ next_level = "res://Levels/LEVEL2.tscn"
 
 [node name="Player" parent="." instance=ExtResource("6_1mn0s")]
 position = Vector2(-317, 4348)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-851, -15962)
+stream = ExtResource("6_5lsuv")
+volume_db = -18.888
+autoplay = true
+max_distance = 1e+06
+attenuation = 0.0

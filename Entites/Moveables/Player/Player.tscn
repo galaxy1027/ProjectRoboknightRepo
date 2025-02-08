@@ -345,7 +345,7 @@ position = Vector2(0.5, 118)
 shape = SubResource("RectangleShape2D_dfugp")
 
 [node name="cooldown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [node name="pivot" type="Marker2D" parent="."]

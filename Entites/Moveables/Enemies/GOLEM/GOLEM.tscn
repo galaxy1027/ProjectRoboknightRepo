@@ -115,7 +115,7 @@ frame_progress = 0.597488
 [node name="HealthBox" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("2_twnin")]
 collision_layer = 16
 health_bar = NodePath("ProgressBar")
-max_health = 200
+max_health = 75
 
 [node name="ProgressBar" type="ProgressBar" parent="HealthBox"]
 offset_left = -60.0
